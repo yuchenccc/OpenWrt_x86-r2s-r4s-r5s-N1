@@ -1,10 +1,10 @@
 #!/bin/bash
 
 SHELL_FOLDER=$(dirname $(readlink -f "$0"))
-bash $SHELL_FOLDER/../common/kernel_5.15.sh
+bash $SHELL_FOLDER/../common/kernel_5.4.sh
 
-svn co https://github.com/coolsnowwolf/lede/trunk/target/linux/x86/patches-5.15 target/linux/x86/patches-5.15
-rm -rf target/linux/x86/patches-5.15/.svn
+svn co https://github.com/coolsnowwolf/lede/trunk/target/linux/x86/patches-5.4 target/linux/x86/patches-5.4
+rm -rf target/linux/x86/patches-5.4/.svn
 
 curl -sfL https://raw.githubusercontent.com/coolsnowwolf/lede/master/package/kernel/linux/modules/video.mk -o package/kernel/linux/modules/video.mk
 
@@ -20,7 +20,7 @@ echo '
 CONFIG_ACPI=y
 CONFIG_X86_ACPI_CPUFREQ=y
 CONFIG_NR_CPUS=512
-' >> ./target/linux/x86/config-5.15
+' >> ./target/linux/x86/config-5.4
 
 sed -i "s/enabled '0'/enabled '1'/g" feeds/packages/utils/irqbalance/files/irqbalance.config
 
